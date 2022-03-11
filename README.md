@@ -2,12 +2,14 @@
 
 This is an open source idle clicker game you can play in your browser.
 
-**Demo:** You can play my finished version of the Existence Simulator on [itch.io](https://jessesgames.itch.io).
+**Demo:** You can play my finished version of the Existence Simulator on [itch.io](https://jessesgames.itch.io/existence-simulator).
+
+<img width="400" alt="26-years-old" src="https://user-images.githubusercontent.com/4774899/157931787-1b6805aa-d64e-4038-a400-5a4e8d462480.png"><img width="400" alt="30-own-blog-side-business-upgrading-equipment-writing-my-own-game" src="https://user-images.githubusercontent.com/4774899/157931863-1415405a-3143-4a7a-8241-aafa4e264e7d.png">
 
 It was built from scratch with TypeScript, Bootstrap, ParcelJS, and Yarn.
 
 **Important:** This open source project _does not contain_ the end-game that you will find 
-in the [itch.io version](https://jessesgames.itch.io) of the game. In fact, the end-game of this repo is 
+in the [itch.io version](https://jessesgames.itch.io/existence-simulator) of the game. In fact, the end-game of this repo is 
 not implemented at all. 
 
 I hope that you can learn something from this repo, and I look forward to the games you will build 
