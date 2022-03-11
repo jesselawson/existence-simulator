@@ -410,10 +410,10 @@ export function getUpgrades() {
     ud.SponsorDrink(),
     ud.SponsorASMR(),
     ud.HireResearchFirm(),
-    ud.HelpPassHealthcareRebates(),
-    ud.HelpPassK12IdleCurriculum(),
-    ud.HelpPassHigherEdGrants(),
-    ud.HelpPassBestLaw(),
+    //ud.HelpPassHealthcareRebates(),
+    //ud.HelpPassK12IdleCurriculum(),
+    //ud.HelpPassHigherEdGrants(),
+    //ud.HelpPassBestLaw(),
     
     
     // hire research
