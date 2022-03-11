@@ -1,0 +1,528 @@
+<!--
+  * Copyright © 2022 Jesse Lawson. [Website](https://jesselawson.org); [Email](jesse@lawsonry.com) 
+  * 
+  * This file is part of Existence Simulator.
+  * 
+  * Existence Simulator is free software: you can redistribute it and/or modify it 
+  * under the terms of the GNU General Public License as published by the Free Software 
+  * Foundation, either version 3 of the License, or (at your option) any later version.
+  * 
+  * Existence Simulator is distributed in the hope that it will be useful, but WITHOUT 
+  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR 
+  * A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+  * 
+  * You should have received a copy of the GNU General Public License along with Foobar. If not, see <https://www.gnu.org/licenses/>.
+  * 
+!-->
+
+<html>
+<head>
+  <title>Existence Simulator</title>
+  <meta charset="UTF-8" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.scss" />
+</head>
+
+  <body>
+    <load-templates></load-templates>
+
+    <div class="container">
+      
+      <h2 id="toptitle" class="text-center">Existence Simulator &hearts; by <a target="_blank" href="https://www.twitter.com/jesseswords"><i class="nes-icon twitter is-small"></i> @jesseswords</a></h2>
+      
+      <div id="loading-container">
+        <div class="nes-container is-rounded is-centered">
+          <h1>LOADING...</h1>
+        </div>
+      </div>
+    <div id="mobile-notice">
+      <p>This game is meant to be played on desktop devices. Sorry.</p>
+    </div>
+    
+    <div id="game-container" class="life-is-weird-isnt-it starts-hidden">
+      
+      <div class="mb-1" id="helpTextContainer">
+          <div id="helpTextMessagesContainer">
+            <p>Loading...</p>
+          
+          </div>
+        </div>
+      </div>
+
+      <div class="row-fluid">
+
+        <p class="lead text-center">
+          <span id="spanBannerImmortal" class="starts-hidden">You are immortal.</span><span id="spanBannerAge">You are <span id="spanNumYearsOld"></span> years and
+          <span id="spanNumDaysOld"></span> days old.</span> <span id="spanBannerWorldwidePlayers" class="starts-hidden">There <span id="spanBannerNumWorldwidePlayers"></span> playing Existence Simulator.</span>
+        </p>
+
+        <div class="progress mb-3 starts-hidden-takes-up-space" id="sectionWorldwidePlayersProgress">
+          <span class="badge bg-light">Worldwide Players</span><div id="worldwidePlayersProgress" class="progress-bar bg-info justify-content-center" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <span class="badge bg-info"> <span id="spanNumWorldwidePlayersInProgressBar"></span> / 9 Billion</span>
+          </div>
+        </div>
+
+        <div class="progress mb-3">
+          <span class="badge bg-light">Anxiety</span><div id="anxietyProgress" class="progress-bar bg-danger justify-content-center" role="progressbar" style="width: 100%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <span class="badge bg-danger"> <span id="spanNumAnxietyInProgressBar"></span> / <span id="spanNumMaxAnxiety"></span></span>
+          </div>
+        </div>
+
+        <div class="row"> <!-- Begin Numbers Row -->
+          <div class="col-4">
+            <ul class="list-group">
+              <li id="labelNumAnxiety" class="starts-hidden-takes-up-space list-group-item d-flex justify-content-between align-items-center">
+                Anxiety 
+                <div>
+                  <span id="spanCannabisEffectIndicator" class="starts-hidden badge badge-small bg-light">🌿</span>
+                  <span id="spanCannabisComeDownIndicator" class="starts-hidden badge badge-small bg-warning">🌿🔻</span>
+                  <span id="sectionMaxAnxietyPerSecond" class="starts-hidden badge badge-small bg-light">+<span id="spanNumAnxietyPerSecond"></span>/s</span>
+                  <span class="badge badge-small bg-secondary rounded-pill"><span id="spanNumAnxiety"></span></span>
+                </div>
+                
+              </li>
+              <li id="badgeClickerGameAnxietyReduction" class="starts-hidden list-group-item d-flex justify-content-between align-items-center">
+                Anxiety Reduction from Games
+                <span class="badge badge-small bg-primary rounded-pill">-<span id="spanNumClickerGameAnxietyReduction" ></span>/s</span>
+              </li>
+              
+            </ul>
+            
+          </div>
+          
+          <div class="col-4">
+            <ul class="list-group">
+
+              <li id="sectionMissedOpportunities" class="starts-hidden-takes-up-space list-group-item d-flex justify-content-between align-items-center">
+                Missed Opportunities
+                <div>
+                  <span id="sectionMissedOpportunitiesPerSecond" class="starts-hidden badge badge-small bg-light">+<span id="spanNumMissedOpportunitiesPerSecond"></span>/s</span>
+                  <span class="badge badge-small bg-primary rounded-pill"><span id="spanNumMissedOpportunities"></span></span>
+                </div>
+              </li>
+
+              <li id="sectionKnowledge" class="starts-hidden list-group-item d-flex justify-content-between align-items-center">
+                Knowledge
+                <div>
+                  <span id="sectionKnowledgePerSecond" class="badge badge-small bg-light">+$<span id="spanNumKnowledgePerSecond"></span>/s</span>
+                  <span id="badgeNumKnowledge" class="badge badge-small bg-primary rounded-pill"><span id="spanNumKnowledge"></span></span>
+                </div>
+              </li>
+              
+              
+              
+            </ul>
+          
+          </div>
+
+          <div class="col-4">
+            <ul class="list-group">
+
+              <li id="sectionMoney" class="starts-hidden list-group-item d-flex justify-content-between align-items-center">
+                Money
+                <div>
+                  <span id="sectionMoneyPerSecondFromBlogPosts" class="badge badge-small bg-light starts-hidden"><span style="font-size: 200%;vertical-align: middle">✍🏽</span> +$<span id="spanNumMoneyPerSecondFromBlogPosts"></span>/s</span>
+                  <span id="sectionMoneyPerSecondFromPodcastEpisodes" class="badge badge-small bg-light starts-hidden"><span style="font-size: 200%;vertical-align: middle">🎙️</span> +$<span id="spanNumMoneyPerSecondFromPodcastEpisodes"></span>/s</span>
+                  <span id="sectionMoneyPerSecond" class="badge badge-small bg-light starts-hidden">+$<span id="spanNumMoneyPerSecond"></span>/s</span>
+                  <span id="badgeNumMoney" class="badge badge-small bg-primary rounded-pill">$<span id="spanNumMoney"></span></span>
+                </div>
+              </li>
+              
+              
+              <li id="sectionInfluence" class="starts-hidden list-group-item d-flex justify-content-between align-items-center">
+                Influence
+                <div id="sectionInfluencePerSecond">
+                  <span class="badge badge-small bg-light"><span style="font-size: 200%;vertical-align: middle">✍🏽</span> +<span id="spanNumInfluencePerSecondFromBlogging"></span>/s</span>
+                  <span class="badge badge-small bg-light"><span style="font-size: 200%;vertical-align: middle">🎙️</span> +<span id="spanNumInfluencePerSecondFromPodcasting"></span>/s</span>
+                  <span class="badge badge-small bg-light">+$<span id="spanNumInfluencePerSecond"></span>/s</span>
+                  <span class="badge badge-small bg-info rounded-pill"><span id="spanNumInfluence" ></span></span>
+                </div>
+              </li>
+            </ul>
+            
+          
+          </div>
+        </div><!-- End Numbers Row -->
+        
+        <div class="row mt-3"> <!-- Begin Interface Row -->
+          
+          <div class="col-lg-3"> <!-- Begin Buttons Column -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="align-middle">
+                    <p><game-button actor="ExistButton" game-color="yellow">
+                      exist
+                    </game-button></p>
+                  </th>
+                  <td class="align-middle">
+                    <p class="small">
+                      Lose 1 day<br/>
+                      <span class="text-secondary">generate +1 anxiety</span>
+                    </p>
+                  </td>
+                </tr>
+                <tr id="sectionDoomscroll" class="starts-hidden-takes-up-space">
+                  <th scope="row" class="align-middle">
+                    <p><game-button actor="DoomscrollButton" class="game-button-small" game-color="yellow">
+                      doomscroll
+                    </game-button></p>
+                  </th>
+                  <td class="align-middle">
+                    <p class="small">
+                      Lose 1 day<br/>
+                      <span class="text-secondary">generate 50 Anxiety.</span>
+                    </p>
+                  </td>
+                </tr>
+                <tr id="sectionCry" class="starts-hidden-takes-up-space">
+                  <th scope="row" class="align-middle">
+                    <p><game-button actor="CryButton" class="" game-color="blue">
+                      cry
+                    </game-button></p>
+                  </th>
+                  <td class="align-middle">
+                    <div id="labelCryCost" class="starts-hidden-takes-up-space">
+                      <p class="small">
+                        <span class="text-primary">-<span id="spanCryCost"></span> anxiety now,</span><br/>
+                        <span class="text-primary starts-hidden" id="labelNumMissedOpportunitiesGeneratedFromCrying">Generate +<span id="spanNumMisedOpportunitiesFromCrying"></span> Missed Opportunities,</span><br/>
+                        <span class="text-secondary">but also generate +0.31 Anxiety per second.</span>
+                      </p>
+                  </td>
+                </tr>
+                <tr id="sectionWork" class="starts-hidden-takes-up-space">
+                  <th scope="row" class="align-middle">
+                    <p><game-button actor="WorkButton" class="" game-color="purple">
+                      work
+                    </game-button></p>
+                  </th>
+                  <td class="align-middle">
+                    <div id="labelWork" class="starts-hidden-takes-up-space">
+                      <p class="small">
+                        <span class="text-primary">Convert 1 Missed Opportunity into some Money</span>
+                        <span id="spanWorkIncreasesAnxiety" class="text-secondary"><br/>Adds a small amount of anxiety</span>
+                      </p>
+                  </td>
+                </tr>
+  
+                <tr id="sectionRead" class="starts-hidden-takes-up-space">
+                  <th scope="row" class="align-middle">
+                    <p><game-button actor="ReadButton" class="" game-color="green">
+                      read
+                    </game-button></p>
+                  </th>
+                  <td class="align-middle">
+                    <div id="labelRead" class="">
+                      <p class="small">
+                        <span class="text-primary">Convert 1 Missed Opportunity into some Knowledge</span>
+                      </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div> <!-- End Buttons Column -->
+
+          <div class="col-lg-9"> <!-- Begin Interface Column -->
+
+            <ul id="interfaceTabsContainer" class="nav nav-tabs" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button id="tryYourBestInterfaceTab" class="starts-hidden nav-link active" data-bs-toggle="tab" href="#tryYourBestInterfaceContainer"><span id="tryYourBestNewItemNotifier"></span> Try Your Best</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button id="spendYourMoneyInterfaceTab" class="starts-hidden nav-link" data-bs-toggle="tab" href="#spendYourMoneyInterfaceContainer"><span id="spendYourMoneyNewItemNotifier"></span> Spend Your Money</button>
+              </li>
+              <li class="nav-item"  role="presentation">
+                <button id="expressYourselfInterfaceTab" class="starts-hidden nav-link" data-bs-toggle="tab" href="#expressYourselfInterfaceContainer"><span id="expressYourselfNewItemNotifier"></span> Express Yourself</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button id="playAGameInterfaceTab" class="starts-hidden nav-link" data-bs-toggle="tab" href="#playAGameInterfaceContainer">Play A Game</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button id="createSomethingInterfaceTab" class="starts-hidden nav-link" data-bs-toggle="tab" href="#createSomethingInterfaceContainer"><span id="createSomethingNewItemNotifier"></span> Create Something</button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button id="doSomethingInterfaceTab" class="starts-hidden nav-link" data-bs-toggle="tab" href="#doSomethingInterfaceContainer"><span id="doSomethingNewItemNotifier"></span> Do Something</button>
+              </li>
+              
+            </ul>
+            <div id="interfaceContentContainer" class="overflow-boy tab-content starts-hidden-takes-up-space">
+              <div class="tab-pane fade active show" id="tryYourBestInterfaceContainer" role="tabpanel"></div>
+              <div class="tab-pane fade" id="spendYourMoneyInterfaceContainer" role="tabpanel"></div>
+              <div class="tab-pane fade" id="expressYourselfInterfaceContainer" role="tabpanel"></div>
+              <!-- START EMBEDDED IDLE GAME -->
+              <div class="tab-pane fade" id="playAGameInterfaceContainer" role="tabpanel">
+                <div class="text-center justify-content-center">
+                  <p><b>'The Fourth Wall', an Idle Clicker Game</b></p>
+                  <p><button id="example-1-button" class="example-button">Add <span id="increment-value"></span> to this &rarr; <span id="example-1-counter">0</span></button> <button id="example-1-upgrade-button" class="example-button game_fadedout">Spend <span id="upgrade-cost"></span> for +1/click</button> <button id="buyAutoClickerButtonElement" class="example-button game_fadedout">Spend <span id="buyAutoClickerButtonUpgradeCostElement"></span> for +1 click/second</button></p>
+                  
+                  <p id="embeddedIdleClickerGameHelpTextContainer"><span id="helptext1">Click at least three times.</span><span id="helptext2" class="game_fadedout">Good! Now try to get your number up to 100.</span><span id="helptext3" class="game_fadedout"> Great job! Can you make it to 1,000?</span><div id="autoClickersStatsContainer" class="game_fadedout">You're a pro!<br/>Total clicks ever: <span id="embeddedIdleClickerGameTotalClicksEver"></span><br/>Auto Clickers: <span id="numAutoClickers"></span> (<span id="autoClickerCPS"></span> clicks/second)</div></p>
+                </div>
+                
+                  <style>
+                    .game_fadedout {
+                        opacity: 0;
+                    }
+                    
+                    .game_fadein {
+                        opacity: 1;
+                    }
+                    
+                    .game_remove {
+                        display:none;
+                    }
+                    
+                    .game_fadedout, .game_fadein {
+                        -webkit-transition: all .5s ease-in-out;
+                        -moz-transition: all .5s ease-in-out;
+                        -o-transition: all .5s ease-in-out;
+                        -ms-transition: all .5s ease-in-out;
+                        transition: all .5s ease-in-out;
+                    }
+                    
+                    </style>
+                    
+                    
+                    
+                    <script type="text/javascript">
+                    var embeddedIdleClickerGameTotalClicksEver = 0;
+                    var e1value = 0;
+                    var incrementValue = 1;
+                    var upgradeCost = 1;
+                    var buyAutoClickerButtonUpgradeCost = 100;
+                    
+                    var embeddedIdleClickerGameGenerators = 
+                        {
+                            autoClickers: {
+                                name_singular: 'Auto Clicker',
+                                name_plural: 'Auto Clickers',
+                                numPurchased: 0,
+                                upgradeCost: 100,
+                                unlocked: true,
+                                purchased: false, 
+                                unlock: function() {
+                                    unlocked = true;
+                                },
+                                canAfford: function() { return this.upgradeCost <= e1value },
+                                buyOne: function() {
+                                    if(!this.purchased) { this.purchased = true; }
+                                    e1value -= this.upgradeCost;
+                                    this.numPurchased += 1;
+                                    this.upgradeCost += 115;
+                                },
+                                update: function() { 
+                                    handleBulkClicks(this.numPurchased);                
+                                }
+                    
+                            }
+                        }
+                    
+                    
+                    var embeddedIdleClickerGameTriggers = [
+                        { 
+                            fired: false,
+                            condition: function() { return e1value >= 100 },
+                            event: function() {
+                                fadeOut('helptext2');
+                                fadeOut('helptext2');
+                                game_fadein('helptext3');
+                            }
+                        },
+                        {   
+                            fired: false,
+                            condition: function() { return e1value >= 1000 },
+                            event: function() {
+                                game_fadein('autoClickersStatsContainer');
+                                fadeOut('embeddedIdleClickerGameHelpTextContainer');
+                            }
+                        },
+                        {
+                            fired: false,
+                            condition: function() { return e1value >= 3 },
+                            event: function() {
+                                game_fadein('example-1-upgrade-button');
+                                fadeOut('helptext1');
+                                game_fadein('helptext2');
+                            }
+                        },
+                        {
+                            fired: false,
+                            condition: function() { return upgradeCost >= 5 },
+                            event: function() {
+                                embeddedIdleClickerGameGenerators.autoClickers.unlocked = true;
+                                game_fadein('buyAutoClickerButtonElement');
+                            }
+                        }
+                    ]
+                    
+                    var e1valueElement = document.getElementById('example-1-counter');
+                    var upgradeCostElement = document.getElementById('upgrade-cost');
+                    var incrementValueElement = document.getElementById('increment-value')
+                    var buyAutoClickerButtonUpgradeCostElement = document.getElementById('buyAutoClickerButtonUpgradeCostElement')
+                    
+                    function game_fadein(someElementId) {
+                        document.getElementById(someElementId).classList.add('game_fadein');
+                    }
+                    
+                    function fadeOut(someElementId) {
+                        document.getElementById(someElementId).classList.add('game_fadedout');
+                        document.getElementById(someElementId).classList.add('game_remove');
+                        document.getElementById(someElementId).classList.remove('game_fadein');
+                    }
+                    
+                    function handleClick() {
+                        embeddedIdleClickerGameTotalClicksEver += incrementValue;
+                        e1value += incrementValue;
+                        e1valueElement.textContent = parseInt(e1value);
+                        updateAll();
+                    }
+                    
+                    function handleBulkClicks(clicks) {
+                        embeddedIdleClickerGameTotalClicksEver += (incrementValue * clicks);
+                        e1value += (incrementValue * clicks);
+                        e1valueElement.textContent = parseInt(e1value);
+                        updateAll();
+                    }
+                    
+                    function handleBuy() {
+                        e1value -= upgradeCost;
+                        
+                        upgradeCost += Math.floor(incrementValue / 2);
+                        incrementValue += 1;
+                        
+                        updateAll();
+                    }
+                    
+                    function buyAutoClicker() {
+                        embeddedIdleClickerGameGenerators.autoClickers.buyOne();
+                        updateAll();
+                    }
+                    
+                    function updateAll() {
+                        updatePrices();
+                        checkUnlocks();
+                        updateButtonClickability();
+                    }
+                    
+                    function updateGenerators() {
+                        if(embeddedIdleClickerGameGenerators.autoClickers.purchased) { embeddedIdleClickerGameGenerators.autoClickers.update()}
+                    }
+                    
+                    function updatePrices() { 
+                        e1valueElement.textContent = parseInt(e1value);
+                        upgradeCostElement.textContent = parseInt(upgradeCost);
+                        incrementValueElement.textContent = parseInt(incrementValue);
+                        buyAutoClickerButtonUpgradeCostElement.textContent = embeddedIdleClickerGameGenerators.autoClickers.upgradeCost;
+                        document.getElementById('embeddedIdleClickerGameTotalClicksEver').textContent = parseInt(embeddedIdleClickerGameTotalClicksEver);
+                        document.getElementById('numAutoClickers').textContent = parseInt(embeddedIdleClickerGameGenerators.autoClickers.numPurchased);
+                        document.getElementById('autoClickerCPS').textContent = parseInt(embeddedIdleClickerGameGenerators.autoClickers.numPurchased*incrementValue);
+                    }
+                    
+                    function a() {
+                        for(let a =0; a<100; a++) {
+                            handleClick();
+                        }
+                    }
+                    
+                    function checkUnlocks() {
+                        embeddedIdleClickerGameTriggers.forEach( (t) => {
+                            if(t.condition()) {
+                                t.fired = true;
+                                t.event();
+                            }
+                        });
+                    }
+                    
+                    function updateButtonClickability() {
+                        document.getElementById('example-1-upgrade-button').disabled = (e1value <= upgradeCost) ? true : false;
+                        document.getElementById('buyAutoClickerButtonElement').disabled = (e1value <= embeddedIdleClickerGameGenerators.autoClickers.upgradeCost) ? true : false;    
+                    
+                    }
+                    
+                    document.getElementById('example-1-button').addEventListener('click', handleClick, false);
+                    document.getElementById('example-1-upgrade-button').addEventListener('click', handleBuy, false);
+                    document.getElementById('buyAutoClickerButtonElement').addEventListener('click', buyAutoClicker, false);
+                    updatePrices();
+                    window.setInterval(updateGenerators, 1000)
+                    </script>
+              </div>
+              <!-- END EMBEDDED IDLE GAME-->
+              <div class="tab-pane fade" id="createSomethingInterfaceContainer" role="tabpanel">
+                <div class="list-group">
+                  <div class="list-group-item flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">✍🏽 Blogging <span class="subtitle"><small>generate passive income <span class="starts-hidden" id="sectionBlogAutomationsStatus"> - Automations are <span id="spanLabelBlogAutomationsStatus"><span class="badge bg-success">ON</span></span> ( <a href="#" id="toggleBlogAutomationsLink">turn off</a> )</small></span></h5>
+                      <small><span id="spanNumBlogPosts"></span></small>
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <p><game-button actor="CreateBlogPostButton" class="game-button-small" game-color="yellow">
+                        create post
+                      </game-button> Convert 1 Missed Opportunity into 1 Blog Post.</p>
+                      
+                      <p id="sectionHireBlogFreelancerButton" class="starts-hidden"><game-button actor="HireBlogFreelancerButton" class="game-button-small" game-color="yellow">
+                        hire freelancer
+                      </game-button> Convert $25 into 1 Blog Post.</p>
+                    </div>
+                    <div id="sectionBlogUpgradesContainer"></div>
+                  </div><!-- end blogging list-group-item -->
+                  <div id="sectionPodcastingContainer" class="starts-hidden list-group-item flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">🎙️ Podcasting <span class="subtitle"><small>generate passive influence <span class="starts-hidden" id="sectionPodcastAutomationsStatus"> - Automations are <span id="spanLabelPodcastAutomationsStatus"><span class="badge bg-success">ON</span></span> ( <a href="#" id="togglePodcastAutomationsLink">turn off</a> )</small></span></h5>
+                      <small class="text-muted"><span id="spanNumPodcastEpisodes"></small>
+                    </div>
+                    <div class="mb-3 mt-3">
+                      <p><game-button actor="CreatePodcastEpisodeButton" class="game-button-small" game-color="red">
+                        create episode
+                      </game-button> Convert 3 Missed Opportunities into 1 Podcast Episode.</p>
+                      <p id="sectionHirePodcastFreelancerButton" class="starts-hidden"><game-button actor="HirePodcastFreelancerButton" class="game-button-small" game-color="red">
+                        hire freelancer
+                      </game-button> Convert $45 into 1 Podcast Episode.</p>
+                    </div>
+                    <div id="sectionPodcastUpgradesContainer"></div>
+                  </div><!-- end podcasting list-group-item -->
+                  <div id="sectionGameDevelopmentContainer" class="starts-hidden list-group-item flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">🎮 Game Development <span class="subtitle"><small>heal the world with games</small></span></h5>
+                    </div>
+                    <div class="mb-3 mt-3" id="sectionCreateSomethingUpgradesContainer">
+                    </div>
+                  </div><!-- end podcasting list-group-item -->
+                </div>
+
+                  
+              </div>
+              <div class="tab-pane fade" id="doSomethingInterfaceContainer" role="tabpanel"></div>
+            </div>
+
+          </div> <!-- End Interface Column -->
+
+        </div> <!-- End Interface Row -->
+
+        
+
+      
+
+      </div>
+  </div><!-- / game container -->
+  <div id="game-over-screen" class="starts-hidden" style="max-width: 600px; margin:auto">
+      <div class="card border-light mb-3 mt-5">
+        <div class="card-header">Game Over</div>
+        <div class="card-body">
+          <h4 class="card-title">You had a nervous breakdown at <span id="gameover-age"></span> years old.</h4>
+            <div class="card-body justify-content-center">
+              <p class="text-center"><a href="index.html"><button type="button" class="btn btn-success" style="color:white">Okay</button></a> <a href="index.html"><button type="button" class="btn btn-info">Thanks</button></a></p>
+            </div>
+        </div>
+      </div>
+  </div> 
+
+    <script type="module" src="app.ts"></script>
+    
+  </body>
+</html>

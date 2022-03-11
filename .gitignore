@@ -1,0 +1,10 @@
+node_modules
+.cache
+.parcel-cache
+dist.zip
+*.zip
+dist
+nuclearlaunchcodes.txt
+*.log
+*.ts.swp
+.DS_Store
