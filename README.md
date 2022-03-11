@@ -32,6 +32,6 @@ See ParcelJS [docs](https://parceljs.org/getting-started/webapp/) for details an
 
 ## Usage and copyright
 
-This project is released under the General Public Licence v3 (GPL-3). [TL;DR Legal](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3))has a good summary of what you can and cannot do.
+This project is released under the General Public Licence v3 (GPL-3). [TL;DR Legal](https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)) has a good summary of what you can and cannot do.
 
 Since this is made available under a GPL license, _any modifications you create -- including other games built using this code -- must also be made available via a GPL license_.
